@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require_relative "../lib/loadbal"
+
+bal = Loadbal.new
+
+if ARGV[0] == "activate"
+  bal.activate
+elsif ARGV[0] == "deactivate"
+  bal.deactivate
+else
+  puts "
+control load balancing via shell
+
+  usage: 
+    loadbal activate
+    loadbal deactivate"
+end
