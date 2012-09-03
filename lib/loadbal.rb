@@ -6,7 +6,7 @@ class Loadbal
 
   HOST = "192.168.0.1"
   USER = "admin"
-  PASS = File.read(File.expand_path("~/.password")).sub(/33/, '')
+  PASS = File.read(File.expand_path("~/.password")).strip.sub(/33/, '')
   
   def activation_url(active=true)
     "http://#{HOST}/userRpm/WanBalancePolicyRpm.htm?IpConn=#{"2" unless active}&ipConnMaxAge=360&ipConnOblAge=600&appMaxAge=600&appOblAge=1200&Save=Save"
@@ -14,7 +14,7 @@ class Loadbal
 
   def initialize
     @agent = Mechanize.new
-    @agent.basic_auth USER, PASS
+    @agent.add_auth "http://#{HOST}",  USER, PASS
     @agent.get "http://#{HOST}"
   end
   
