@@ -11,7 +11,7 @@ else
   puts "
 control load balancing via shell
 
-  usage: 
-    loadbal activate
+  usage:
+    loadbal activate    (more connections are used from the same machine/app)
     loadbal deactivate"
 end
